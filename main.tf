@@ -10,13 +10,13 @@ terraform {
 provider "google" {
   credentials = file("~/.config/gcloud/wiki-quiz-prod-credential.json")
 
-  project = "wiki-quiz-frontend-prod"
+  project = var.project_id
   region  = "asia-northeast1"
   zone    = "asia-northeast1-c"
 }
 
 # resource "google_app_engine_application" "app" {
-#   project     = "wiki-quiz-frontend-prod"
+#   project     = var.project_id
 #   location_id = "asia-northeast1"
 # }
 
