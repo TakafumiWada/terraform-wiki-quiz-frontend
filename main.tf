@@ -15,11 +15,19 @@ provider "google" {
   zone    = "asia-northeast1-c"
 }
 
-# resource "google_app_engine_application" "app" {
-#   project     = var.project_id
-#   location_id = "asia-northeast1"
-# }
+resource "google_app_engine_application" "app" {
+  project     = var.project_id
+  location_id = "asia-northeast1"
+}
 
+resource "google_app_engine_domain_mapping" "this" {
+  project     = var.project_id
+  domain_name = "quiz-wiki.com"
+
+  ssl_settings {
+    ssl_management_type = "AUTOMATIC"
+  }
+}
 
 resource "google_project_iam_member" "this" {
   project = var.project_id
